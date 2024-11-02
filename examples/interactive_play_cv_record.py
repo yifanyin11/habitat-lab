@@ -82,7 +82,7 @@ import cv2
 # CONFIG_PATH = "habitat-lab/habitat/config/benchmark/rearrange/play/play_stretch.yaml"
 
 DEFAULT_POSE_PATH = "data/humanoids/humanoid_data/walking_motion_processed.pkl"
-DEFAULT_CFG = "benchmark/rearrange/play/play_stretch_cv.yaml"
+DEFAULT_CFG = "benchmark/rearrange/play/play_stretch_record.yaml"
 
 DEFAULT_RENDER_STEPS_LIMIT = 60
 SAVE_VIDEO_DIR = "./data/vids"
