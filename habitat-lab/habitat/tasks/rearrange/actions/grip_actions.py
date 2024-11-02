@@ -55,13 +55,16 @@ class MagicGraspAction(GripSimulatorTaskAction):
                 ee_pos - scene_obj_pos[closest_obj_idx], ord=2
             )
 
-            keep_T = mn.Matrix4.translation(mn.Vector3(0.1, 0.0, 0.0))
+            keep_T = mn.Matrix4.translation(mn.Vector3(0.0, 0.0, 0.0))
+            # keep_T = mn.Matrix4.translation(mn.Vector3(0.1, 0.0, 0.0))
 
             if to_target < self._config.grasp_thresh_dist:
                 self.cur_grasp_mgr.snap_to_obj(
                     self._sim.scene_obj_ids[closest_obj_idx],
                     force=False,
-                    rel_pos=mn.Vector3(0.1, 0.0, 0.0),
+                    rel_pos=mn.Vector3(0.0, 0.1, 0.1),
+                    should_open_gripper=False,
+                    # rel_pos=mn.Vector3(0.0, 0.0, 0.15),
                     keep_T=keep_T,
                 )
                 return
@@ -220,7 +223,7 @@ class GazeGraspAction(MagicGraspAction):
             cam_pos = (
                 self._sim.agents[0]
                 .get_state()
-                .sensor_states["head_rgb"]
+                .sensor_states["articulated_agent_arm_rgb"]
                 .position
             )
         else:
